@@ -15,7 +15,7 @@ node{
     sh "npm run build --prod"
   }
   
-  stage("Copy"){
-    sh "cp -a /var/lib/jenkins/jobs/Deploy-Eventos/builds/. /var/www/main/html/*"
-  }
+  //stage("Copy"){
+    //sh "cp -a /var/lib/jenkins/jobs/Deploy-Eventos/builds/. /var/www/main/html/*"
+  //}
 }
