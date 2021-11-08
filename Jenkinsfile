@@ -1,6 +1,6 @@
 node{
   stage('Checkout SCM'){
-    git branch: 'main', url: 'https://github.com/OzinoLautaro/InstaEventosDeployJenkins.git'
+    git branch: 'main', url: 'https://github.com/LasaldeTomas/web-bot.git'
   }
   
   stage('Install node modules'){
