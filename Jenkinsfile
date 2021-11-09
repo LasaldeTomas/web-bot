@@ -18,6 +18,7 @@ pipeline{
     stage('Install node modules'){
       steps{
         sh "npm ci"
+        sh "npm install firebase-tools firebase"
       }
     }
     
@@ -29,7 +30,6 @@ pipeline{
 
     stage("Deploy"){
       steps{
-        sh "npm install firebase-tools firebase"
         sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
       }
     }
