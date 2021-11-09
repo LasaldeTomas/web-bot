@@ -8,11 +8,11 @@ pipeline{
         FIREBASE_TOKEN = credentials('FIREBASE_TOKEN')
     }
   stages{
-    stage('Checkout SCM'){
-      steps {
-        git branch: 'main', url: 'https://github.com/LasaldeTomas/web-bot.git'
-      }
-    }
+    //stage('Checkout SCM'){
+      //steps {
+        //git branch: 'main', url: 'https://github.com/LasaldeTomas/web-bot.git'
+      //}
+    //}
     
     stage('Install node modules'){
       steps{
