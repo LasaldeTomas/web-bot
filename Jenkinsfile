@@ -9,7 +9,9 @@ pipeline{
     }
   stages{
     stage('Checkout SCM'){
-      git branch: 'main', url: 'https://github.com/LasaldeTomas/web-bot.git'
+      steps {
+        git branch: 'main', url: 'https://github.com/LasaldeTomas/web-bot.git'
+      }
     }
     
     stage('Install node modules'){
