@@ -30,7 +30,7 @@ pipeline{
 
     stage("Deploy"){
       steps{
-        dir("${env.WORKSPACE}@") {
+        dir("${env.WORKSPACE}") {
           sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
         }
       }
