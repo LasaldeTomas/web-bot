@@ -28,7 +28,7 @@ pipeline{
 
     stage("Deploy"){
       steps{
-        sh "npm install -g firebase-tools"
+        sh "npm install firebase-tools"
         sh "firebase deploy --only hosting --token '$FIREBASE_TOKEN'"
       }
     }
