@@ -30,10 +30,9 @@ pipeline{
 
     stage("Deploy"){
       steps{
-        dir("${env.WORKSPACE}@tmp") {
-          deleteDir()
+        dir("${env.WORKSPACE}@") {
+          sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
         }
-        sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
       }
     }
   
