@@ -13,16 +13,22 @@ pipeline{
     }
     
     stage('Install node modules'){
-      sh "npm install"
+      steps{
+        sh "npm install"
+      }
     }
     
     stage("Build"){
-      sh "npm run build --prod"
+      steps{
+        sh "npm run build --prod"
+      }
     }
 
     stage("Deploy"){
-      sh "npm install -g firebase-tools",
-      sh "firebase deploy --only hosting --token '$FIREBASE_TOKEN'"
+      steps{
+        sh "npm install -g firebase-tools",
+        sh "firebase deploy --only hosting --token '$FIREBASE_TOKEN'"
+      }
     }
   
   //stage("Copy"){
