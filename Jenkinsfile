@@ -28,13 +28,13 @@ pipeline{
       }
     }
 
-    stage("Deploy"){
-      steps{
-        dir("${env.WORKSPACE}") {
-          sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
-        }
-      }
-    }
+    //stage("Deploy"){
+      //steps{
+        //dir("${env.WORKSPACE}") {
+          //sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
+        //}
+      //}
+    //}
   
   //stage("Copy"){
     //sh "cp -a /var/lib/jenkins/jobs/Deploy-Eventos/builds/. /var/www/main/html/*"
