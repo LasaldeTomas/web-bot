@@ -11,11 +11,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   constructor(private _premium: SuscripcionService) { }
 
   ngOnInit(): void {
+    console.log(document.body.clientWidth);
   }
 
   ngAfterViewInit(): void {
     this._premium.isPremium().then(res => {
-      if (!res) {
+      if (!res && document.body.clientWidth >= 800) {
         const premium_btn: any = document.querySelector('.premium-button');
         premium_btn.style.display = "block";
       }

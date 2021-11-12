@@ -1,6 +1,6 @@
 ._navbar {
     display: flex;
-    background-color: black;
+    background-color: #121212;
     padding: 7px 15px;
     align-items: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -33,6 +33,5 @@
 @media screen and (max-width: 800px) {
     .navbar-link-button {
         display: none;
-        background-color: green;
     }
 }

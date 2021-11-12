@@ -19,5 +19,17 @@
 </ng-container>
 
 <ng-template #loggedOut>
-    <div class="btn btn-light me-3" (click)="loginConDiscord()">Login</div>
+    <div class="btn btn-light me-3 btn-login" (click)="loginConDiscord()">Login</div>
+    <div class="mobile-menu-btn"><span class="material-icons icono-btn" (click)="mostrarMenuMobile()">density_medium</span></div>
+    <div class="mobile-menu">
+        <div class="close-btn-div">
+            <span class="material-icons close-btn-menu" (click)="cerrarMenuMobile()">close</span>
+        </div>
+        <div class="links-flex">
+            <a routerLink="/principal" class="link-btn" (click)="cerrarMenuMobile()">Inicio</a>
+            <a routerLink="/calendarioPublico" class="link-btn" (click)="cerrarMenuMobile()">Eventos</a>
+            <a routerLink="/comandos" class="link-btn" (click)="cerrarMenuMobile()">Comandos</a>
+            <a class="link-btn login-btn-mobile" (click)="loginConDiscord()">Iniciar Sesion</a>
+        </div>
+    </div>
 </ng-template>

@@ -16,6 +16,8 @@ export class LoginButtonComponent implements OnInit, AfterViewInit {
 
   userName:string = "";
 
+  anchoDocumento: number = 0;
+
   constructor(public _oauth: OauthService, private _premium: SuscripcionService) {
   }
 
@@ -32,6 +34,8 @@ export class LoginButtonComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    
+    this.anchoDocumento = document.body.clientWidth;
 
     this._premium.isPremium().then(res => {
       if (res) {
@@ -52,6 +56,24 @@ export class LoginButtonComponent implements OnInit, AfterViewInit {
 
   loginConDiscord = () => {
     window.location.href = this.url;
+  }
+
+  mostrarMenuMobile = () => {
+    const menu: any = document.querySelector('.mobile-menu');
+    const btn_cerrar: any = document.querySelector('.close-btn-menu');
+    const links: any = document.querySelector('.links-flex');
+    menu.style.height = "100vh";
+    btn_cerrar.style.display = "block";
+    links.style.display = "flex";
+  }
+
+  cerrarMenuMobile = () => {
+    const menu: any = document.querySelector('.mobile-menu');
+    const btn_cerrar: any = document.querySelector('.close-btn-menu');
+    const links: any = document.querySelector('.links-flex');
+    menu.style.height = "0";
+    btn_cerrar.style.display = "none";
+    links.style.display = "none";
   }
 
 }

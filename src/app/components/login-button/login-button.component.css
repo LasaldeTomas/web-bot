@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300;1,900&display=swap';
+
 .btn-username {
     font-weight: 400;
     padding-top: 2px;
@@ -28,4 +30,79 @@
 
 li.premium-button {
     display: none;
+}
+
+.icono-btn {
+    color: #fff;
+    cursor: pointer;
+}
+
+.mobile-menu-btn {
+    display: none;
+    margin-right: 7px;
+}
+
+.mobile-menu {
+    display: block;
+    position: fixed;
+    height: 0;
+    width: 100vw;
+    background-color: #121212;
+    inset: 0;
+    transition: height 0.2s linear;
+    z-index: 999;
+}
+
+.close-btn-div {
+    display: flex;
+    justify-content: end;
+    padding: 15px;
+}
+
+.close-btn-menu {
+    display: none;
+    color: #fff;
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
+.link-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-family: 'Roboto';
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.link-btn:hover {
+    color: #ccc;
+}
+
+.links-flex {
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 70%;
+    margin-top: 35px;
+}
+
+.login-btn-mobile {
+    color: #6ef;
+}
+
+.login-btn-mobile:hover {
+    color: #3bc;
+}
+
+@media screen and (max-width: 800px) {
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-login {
+        display: none;
+    }
 }
