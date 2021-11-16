@@ -21,7 +21,8 @@ import { PremiumComponent } from './components/premium/premium.component';
 import { ProcesarPagoComponent } from './components/procesar-pago/procesar-pago.component';
 import { CalendarioPublicoComponent } from './components/calendario-publico/calendario-publico.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -37,8 +38,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MisEventosComponent,
     PremiumComponent,
     ProcesarPagoComponent,
-    CalendarioPublicoComponent
-
+    CalendarioPublicoComponent,
+    
   ],
   imports: [
     BrowserModule,

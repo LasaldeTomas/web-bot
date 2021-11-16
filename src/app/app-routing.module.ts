@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MisEventosComponent } from './components/mis-eventos/mis-eventos.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 
+
 const routes: Routes = [
   {path:'calendario', component:CalendarioComponent},
   {path:'calendarioPublico', component:CalendarioPublicoComponent},
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path: 'premium', component: PremiumComponent, canActivate: [AuthGuard]},
   {path: 'procesar-pago', component: ProcesarPagoComponent, canActivate: [AuthGuard]},
   {path:'', redirectTo: '/principal',pathMatch:'full'},
-  {path: '**', redirectTo: '/principal', pathMatch: 'full'}
+  {path: '**', redirectTo: '/principal', pathMatch: 'full'},
+  
+  
   
 ];
 

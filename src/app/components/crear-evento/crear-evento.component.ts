@@ -7,12 +7,16 @@ import { OauthService } from 'src/app/services/oauth.service';
 import { DISCORD_LOGIN_URL } from 'src/environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { CalendarioComponent } from '../calendario/calendario.component';
+
+//declare var $: any;
 
 @Component({
   selector: 'app-crear-evento',
   templateUrl: './crear-evento.component.html',
   styleUrls: ['./crear-evento.component.css']
 })
+
 export class CrearEventoComponent implements OnInit, AfterViewInit {
 
   url = DISCORD_LOGIN_URL;
@@ -33,7 +37,9 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
 
   pub: boolean = false;
 
-  constructor(private _oauth: OauthService, private fb: FormBuilder, private _eventoService: EventoService, private router: Router, private storage: AngularFireStorage, private _premium: SuscripcionService) {
+  fechas: Array<Date>=[];
+
+  constructor(private _oauth: OauthService, private fb: FormBuilder, private _eventoService: EventoService, private router: Router, private storage: AngularFireStorage, private _premium: SuscripcionService ) {
     this.isLoggedIn = localStorage.getItem('token') ? true : false;
     this.crearEvento = this.fb.group({
       nombre: ['', Validators.required],
@@ -45,6 +51,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    
     if (this.isLoggedIn) {
       this._oauth.getGuilds().subscribe(data => {
         for (let guild of data) {
@@ -60,6 +67,11 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
       this._oauth.getUser().subscribe(data => {
         this.userId = data.id;
       });
+      this._eventoService.getEventos().subscribe(res => {
+        for (let evento of res) {
+          this.fechas.push(evento.payload.doc.data().fecha.toDate())
+        }
+      })
     }
   }
 
@@ -123,7 +135,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
   loginConDiscord = () => {
     window.location.href = this.url;
   }
-
+  
   elegirServer = (serverId: any) => {
     const circuloLogin: any = document.getElementById('circulo-1');
     const circuloServers: any = document.getElementById('circulo-2');
@@ -148,6 +160,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
     this.submitted = false;
   }
 
+
   agregarEvento = () => {
     this.submitted = true;
     if(this.crearEvento.invalid) return;
@@ -155,7 +168,19 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
 
     const fechaEvento: Date = new Date(this.crearEvento.value.fecha);
 
-    const obj = {
+    console.log("Fecha evento" + fechaEvento);
+
+    
+
+    this.fechas.forEach(fecha=>{
+      console.log(fecha);
+      if (fechaEvento.toString() == fecha.toString()){
+        alert("Ya hay otro evento en la misma fecha");
+        
+      }
+    });
+
+    /* const obj = {
       idCreador: this.userId,
       idServidor: this.serverElegido,
       nombre: this.crearEvento.value.nombre,
@@ -172,10 +197,10 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
       console.log("Evento agregado");
     }).catch(error => {
       console.log(error);
-    })
+    }) */
   }
 
-
+  
   mostrarCartel = () => {
     const cartel: any = document.querySelector(".cartel-fondo");
     cartel.style.display = "flex";
@@ -187,8 +212,4 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
     const cartelEventoCreado: any = document.querySelector(".cartel-fondo-evento-creado");
     cartelEventoCreado.style.display = "flex";
   }
-
 }
-
-
-
