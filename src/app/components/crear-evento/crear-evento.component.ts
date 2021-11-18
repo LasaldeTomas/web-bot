@@ -180,7 +180,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
       }
     });
 
-    /* const obj = {
+    const obj = {
       idCreador: this.userId,
       idServidor: this.serverElegido,
       nombre: this.crearEvento.value.nombre,
@@ -197,7 +197,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
       console.log("Evento agregado");
     }).catch(error => {
       console.log(error);
-    }) */
+    })
   }
 
   

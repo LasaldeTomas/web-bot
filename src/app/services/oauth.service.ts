@@ -5,6 +5,7 @@ import { DISCORD_TOKEN_URL,
   CLIENT_SECRET,
   REDIRECT_URI } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth'
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,20 @@ export class OauthService {
   private redirect_uri: string;
   private token_url: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private _firebaseAuth: AngularFireAuth) {
     this.client_id = CLIENT_ID;
     this.client_secret = CLIENT_SECRET;
     this.redirect_uri = REDIRECT_URI;
     this.token_url = DISCORD_TOKEN_URL;
   }
 
-  
+  async logIn() {
+    let userId: string = '';
+    await this.getUser().toPromise().then(res => {
+      userId = res.id;
+    })
+    return await this.http.post('http://localhost:3000/generate-token', {userId}).toPromise();
+  }
 
   getToken(code: string): Observable<any> {
     const data = new HttpParams()
@@ -59,6 +66,7 @@ export class OauthService {
       .append('grant_type', 'authorization_code')
       .append('refresh_token', localStorage.getItem('refresh_token') || '')
     this.http.post(this.token_url, data)
+    this._firebaseAuth.signOut();
     window.location.href = '/';
   }
 

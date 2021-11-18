@@ -22,6 +22,7 @@ import { ProcesarPagoComponent } from './components/procesar-pago/procesar-pago.
 import { CalendarioPublicoComponent } from './components/calendario-publico/calendario-publico.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 
 
@@ -54,7 +55,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AuthModule.forRoot({
       ...env.auth,
     }),
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
