@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.access_token);
       });
 
-      await this._oauthService.logIn().then(async data => {
+      /* await this._oauthService.logIn().then(async data => {
         await this._firebaseAuth.signInWithCustomToken(data.toString());
-      });
+      }); */
       
       window.location.href = '/principal'
     })

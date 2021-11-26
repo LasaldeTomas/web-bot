@@ -66,7 +66,7 @@ export class OauthService {
       .append('grant_type', 'authorization_code')
       .append('refresh_token', localStorage.getItem('refresh_token') || '')
     this.http.post(this.token_url, data)
-    this._firebaseAuth.signOut();
+    //this._firebaseAuth.signOut();
     window.location.href = '/';
   }
 
