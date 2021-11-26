@@ -162,6 +162,7 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
 
 
   agregarEvento = () => {
+    let yaExiste = false;
     this.submitted = true;
     if(this.crearEvento.invalid) return;
     if(this.imgUrl == "") return;
@@ -170,15 +171,15 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
 
     console.log("Fecha evento" + fechaEvento);
 
-    
-
     this.fechas.forEach(fecha=>{
       console.log(fecha);
       if (fechaEvento.toString() == fecha.toString()){
         alert("Ya hay otro evento en la misma fecha");
-        
+        yaExiste = true;
       }
     });
+
+    if (yaExiste) return;
 
     const obj = {
       idCreador: this.userId,
