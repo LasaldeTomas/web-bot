@@ -175,11 +175,8 @@ export class CrearEventoComponent implements OnInit, AfterViewInit {
       console.log(fecha);
       if (fechaEvento.toString() == fecha.toString()){
         alert("Ya hay otro evento en la misma fecha");
-        yaExiste = true;
       }
     });
-
-    if (yaExiste) return;
 
     const obj = {
       idCreador: this.userId,
